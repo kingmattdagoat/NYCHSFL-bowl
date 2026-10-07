@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0f14">
+<title>NYCHSFL Bowl</title>
+<style>
+:root{--bg:#070a0e;--panel:#10161d;--panel2:#151d26;--gold:#f4c542;--green:#35c56a;--red:#ff5b5b;--text:#f5f7fa;--muted:#9ca8b5;--line:#26313d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#17212b 0,#070a0e 48%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button{font:inherit}.topbar{height:68px;border-bottom:1px solid var(--line);background:#090d12e8;backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:10}
+.brand{font-weight:1000;letter-spacing:1.5px}.brand span{color:var(--gold)}.nav{display:flex;gap:8px}.nav button,.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 13px;border-radius:9px;cursor:pointer}.nav button:hover,.ghost:hover{color:#fff;border-color:#445363}
+main{max-width:1180px;margin:auto;padding:28px 18px 60px}.screen{display:none}.screen.active{display:block}.hero{min-height:500px;display:grid;grid-template-columns:1.15fr .85fr;gap:25px;align-items:center}.hero h1{font-size:clamp(48px,8vw,88px);line-height:.86;margin:0 0 18px;letter-spacing:-4px}.hero h1 em{font-style:normal;color:var(--gold)}.hero p{color:var(--muted);font-size:18px;max-width:600px;line-height:1.6}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.primary{background:var(--gold);color:#101010;border:0;border-radius:10px;padding:13px 20px;font-weight:900;cursor:pointer}.primary:hover{filter:brightness(1.08)}.card{background:linear-gradient(145deg,#131b24,#0d1319);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 18px 50px #0006}.score-card{padding:26px}.eyebrow{color:var(--gold);font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.big-score{font-size:58px;font-weight:1000;margin:8px 0}.muted{color:var(--muted)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:12px 0 18px}.section-head h2{margin:0;font-size:30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.team{cursor:pointer;transition:.15s transform,.15s border-color}.team:hover{transform:translateY(-3px);border-color:#536272}.team .logo{width:52px;height:52px;border-radius:12px;background:#1d2731;display:grid;place-items:center;font-weight:1000;font-size:14px;margin-bottom:15px}.team h3{margin:0 0 6px}.team small{color:var(--muted)}.record{float:right;color:var(--green);font-weight:800}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}.game-shell{max-width:1000px;margin:auto}.game-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}.team-score{text-align:center}.team-score strong{font-size:34px}.clock{text-align:center}.clock b{display:block;font-size:28px}.field{height:360px;margin:18px 0;background:repeating-linear-gradient(90deg,#168b43 0,#168b43 9.09%,#147d3c 9.09%,#147d3c 18.18%);border:5px solid #e7eee8;border-radius:12px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 2px #ffffff55}.yard{position:absolute;top:0;bottom:0;width:2px;background:#fff8}.player{position:absolute;width:30px;height:30px;border-radius:7px;background:#f5f5f5;color:#111;display:grid;place-items:center;font-size:10px;font-weight:1000;transition:.35s;box-shadow:0 4px 12px #0007}.player.off{background:#f2c84b}.ball{background:#8a4b22;color:white}.playbook{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.play{background:#141d26;border:1px solid var(--line);color:#fff;border-radius:10px;padding:16px 8px;font-weight:900;cursor:pointer}.play:hover{border-color:var(--gold);background:#1b2530}.status{min-height:42px;text-align:center;margin:15px 0;color:#d9e1e8;font-weight:700}.bar{display:flex;justify-content:space-between;gap:10px;margin-top:12px;color:var(--muted);font-size:14px}.pill{padding:5px 8px;border:1px solid var(--line);border-radius:99px}.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal.show{display:flex}.modal .card{max-width:520px;width:100%}.close{float:right;background:transparent;border:0;color:#fff;font-size:24px;cursor:pointer}.roster-row{display:grid;grid-template-columns:1fr 80px 60px;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.rating{font-weight:900;color:var(--gold);text-align:right}
+@media(max-width:760px){.topbar{padding:0 12px}.nav button:nth-child(n+3){display:none}.hero{grid-template-columns:1fr;min-height:auto;padding-top:35px}.grid{grid-template-columns:1fr}.game-top{grid-template-columns:1fr 1fr 1fr}.field{height:290px}.playbook{grid-template-columns:1fr 1fr}.big-score{font-size:45px}main{padding:20px 12px 45px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">NYCHSFL <span>BOWL</span></div>
+  <nav class="nav">
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('teams')">Teams</button>
+    <button onclick="show('season')">Season</button>
+    <button onclick="show('roster')">Roster</button>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="screen active">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">NY high school football • arcade mode</div>
+      <h1>BUILD.<br><em>PLAY.</em><br>WIN.</h1>
+      <p>A fast, original arcade football experience built around NYCHSFL-style teams. Pick your school, call the plays, manage your season and chase the championship.</p>
+      <div class="actions"><button class="primary" onclick="startSeason()">START SEASON</button><button class="ghost" onclick="show('teams')">VIEW TEAMS</button></div>
+    </div>
+    <div class="card score-card">
+      <div class="eyebrow">Featured matchup</div>
+      <div class="big-score">CHA 24 — 21 ION</div>
+      <div class="muted">Chaminade leads the late-season race.</div>
+      <div class="bar"><span class="pill">WEEK 7</span><span>Friday Night</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="teams" class="screen">
+  <div class="section-head"><div><div class="eyebrow">League</div><h2>Choose your team</h2></div><button class="ghost" onclick="startSeason()">Quick Start</button></div>
+  <div class="grid" id="teamGrid"></div>
+</section>
+
+<section id="season" class="screen">
+  <div class="section-head"><div><div class="eyebrow">Franchise</div><h2 id="seasonTitle">Your Season</h2></div><button class="primary" onclick="newGame()">PLAY NEXT GAME</button></div>
+  <div class="grid">
+    <div class="card"><div class="eyebrow">Record</div><div class="big-score" id="record">0-0</div><div class="muted">Keep stacking wins.</div></div>
+    <div class="card"><div class="eyebrow">Week</div><div class="big-score" id="week">1</div><div class="muted">Regular season</div></div>
+    <div class="card"><div class="eyebrow">Next Opponent</div><h2 id="nextOpp">—</h2><div class="muted">Home game</div></div>
+  </div>
+  <div class="card" style="margin-top:15px"><div class="eyebrow">Schedule</div><table class="table"><thead><tr><th>Week</th><th>Opponent</th><th>Result</th></tr></thead><tbody id="schedule"></tbody></table></div>
+</section>
+
+<section id="roster" class="screen">
+  <div class="section-head"><div><div class="eyebrow">Depth chart</div><h2 id="rosterTitle">Roster</h2></div></div>
+  <div class="card"><div id="rosterList"></div></div>
+</section>
+
+<section id="game" class="screen">
+  <div class="game-shell">
+    <div class="game-top">
+      <div class="team-score"><div class="muted" id="awayName">AWAY</div><strong id="awayScore">0</strong></div>
+      <div class="clock"><span class="pill" id="downText">1ST & 10</span><b id="clock">2:00</b><small class="muted">Q1</small></div>
+      <div class="team-score"><div class="muted" id="homeName">HOME</div><strong id="homeScore">0</strong></div>
+    </div>
+    <div class="field" id="field">
+      <div class="yard" style="left:10%"></div><div class="yard" style="left:20%"></div><div class="yard" style="left:30%"></div><div class="yard" style="left:40%"></div><div class="yard" style="left:50%"></div><div class="yard" style="left:60%"></div><div class="yard" style="left:70%"></div><div class="yard" style="left:80%"></div><div class="yard" style="left:90%"></div>
+      <div class="player" id="qb" style="left:16%;top:44%">QB</div><div class="player off" id="rb" style="left:25%;top:64%">RB</div><div class="player off" id="wr" style="left:30%;top:25%">WR</div><div class="player off" id="wr2" style="left:31%;top:76%">WR</div><div class="player" id="db" style="left:49%;top:30%">DB</div><div class="player" id="db2" style="left:53%;top:65%">DB</div><div class="player ball" id="ball" style="left:19%;top:47%">●</div>
+    </div>
+    <div class="status" id="status">Choose a play.</div>
+    <div class="playbook">
+      <button class="play" onclick="runPlay('run')">RUN<br><small>safe</small></button>
+      <button class="play" onclick="runPlay('short')">SHORT PASS<br><small>balanced</small></button>
+      <button class="play" onclick="runPlay('screen')">SCREEN<br><small>quick</small></button>
+      <button class="play" onclick="runPlay('deep')">DEEP PASS<br><small>risky</small></button>
+    </div>
+    <div class="bar"><span id="posText">Possession: You</span><button class="ghost" onclick="show('season')">Quit Game</button></div>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="modal"><div class="card"><button class="close" onclick="closeModal()">×</button><div class="eyebrow">Game Result</div><h2 id="modalTitle"></h2><p id="modalText" class="muted"></p><button class="primary" onclick="closeModal();show('season')">CONTINUE</button></div></div>
+
+<script>
+const teams=[
+{name:"Chaminade",abbr:"CHA",players:[["Matthew Trainor","QB",88],["Jared Jackson","RB",84],["Michael Genovese","WR",91],["Christian Birch Trani","WR",92],["Kelly Knapp","TE",86]]},
+{name:"Iona Prep",abbr:"ION",players:[["Julian Guzman","QB",90],["Crew Davis","RB",91],["Eric Pirrello","WR",88],["Joe Wolf","WR",90]]},
+{name:"St. Anthony's",abbr:"STA",players:[["Xavier Bala","RB",91],["Johnny Russo","WR",87]]},
+{name:"Stepinac",abbr:"STE",players:[["Richie DeMarco","WR",92],["Jordyn Eaton","WR",91],["John Smith","RB",89]]},
+{name:"Kellenberg",abbr:"KEL",players:[["Daniel Licari","QB",89],["John Hastings","WR",84]]},
+{name:"Xaverian",abbr:"XAV",players:[["Terrence Watson","QB",90],["Richie Aiken","RB",92],["Christian LaRocca","WR",87]]},
+{name:"Fordham Prep",abbr:"FOR",players:[["Colin Ballantyne","QB",91],["Lake Chiesi","WR",87]]},
+{name:"St. Francis Prep",abbr:"SFP",players:[["Jack Leary","QB",86],["Sean Ibert","RB",87],["Rocco Petronella","WR",88]]},
+{name:"Cardinal Hayes",abbr:"HAY",players:[["Aiden Howard","TE",92],["Kevin Mann","OL",87]]},
+{name:"Monsignor Farrell",abbr:"FAR",players:[["Kevin Gumb","RB",91],["Bryce Moye","QB",80],["Alex Ustun","WR",86]]}
+];
+let state={team:teams[0],week:1,w:0,l:0,opp:null,home:0,away:0,down:1,togo:10,secs:120,q:1};
+
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active'); if(id==='season')renderSeason(); if(id==='roster')renderRoster(); window.scrollTo(0,0)}
+function renderTeams(){teamGrid.innerHTML=teams.map((t,i)=>`<div class="card team" onclick="selectTeam(${i})"><div class="logo">${t.abbr}</div><h3>${t.name}</h3><small>${t.players.length} featured players <span class="record">OVR ${Math.round(t.players.reduce((a,p)=>a+p[2],0)/t.players.length)}</span></small></div>`).join('')}
+function selectTeam(i){state.team=teams[i];state.week=1;state.w=0;state.l=0;show('season')}
+function startSeason(){show('teams')}
+function renderSeason(){
+seasonTitle.textContent=state.team.name+" Season";record.textContent=state.w+"-"+state.l;week.textContent=state.week;
+state.opp=teams[(teams.indexOf(state.team)+state.week)%teams.length];nextOpp.textContent=state.opp.name;
+schedule.innerHTML=Array.from({length:7},(_,i)=>{let op=teams[(teams.indexOf(state.team)+i+1)%teams.length];let res=i+1<state.week?(i%2===0?'W':'L'):'—';return `<tr><td>${i+1}</td><td>${op.name}</td><td>${res}</td></tr>`}).join('')
+}
+function renderRoster(){rosterTitle.textContent=state.team.name+" Roster";rosterList.innerHTML=state.team.players.map(p=>`<div class="roster-row"><span>${p[0]}<br><small class="muted">${p[1]}</small></span><span></span><span class="rating">${p[2]}</span></div>`).join('')}
+function newGame(){state.opp=teams[(teams.indexOf(state.team)+state.week)%teams.length];state.home=0;state.away=0;state.down=1;state.togo=10;state.secs=120;state.q=1;awayName.textContent=state.opp.abbr;homeName.textContent=state.team.abbr;awayScore.textContent=0;homeScore.textContent=0;status.textContent="Choose a play.";updateDown();show('game')}
+function updateDown(){downText.textContent=(state.down===1?'1ST':state.down===2?'2ND':state.down===3?'3RD':'4TH')+" & "+state.togo;clock.textContent=Math.floor(state.secs/60)+":"+String(state.secs%60).padStart(2,'0')}
+function runPlay(type){
+const avg=state.team.players.reduce((a,p)=>a+p[2],0)/state.team.players.length;
+const ranges={run:[2,8],short:[3,14],screen:[4,11],deep:[0,28]};
+const [lo,hi]=ranges[type];let gain=Math.floor(Math.random()*(hi-lo+1))+lo;
+let turnover=Math.random() < ({run:.025,short:.06,screen:.04,deep:.12}[type]);
+state.secs=Math.max(0,state.secs-Math.floor(Math.random()*9+5));
+animate(type,turnover);
+if(turnover){status.textContent=type==='deep'?'INTERCEPTION!':'FUMBLE!';state.down=1;state.togo=10;state.q=state.q===4?4:state.q+1; if(state.q===4&&state.secs===0)finish(); else updateDown();return}
+if(Math.random()<0.055 || gain>=state.togo){gain=Math.max(gain,state.togo);state.down=1;state.togo=10;status.textContent=gain>=10?'FIRST DOWN!':'BIG PLAY!';}
+else{state.togo-=gain;state.down++;status.textContent=`${gain} yard${gain===1?'':'s'} on the ${type.toUpperCase()}.`}
+if(gain>=20 || Math.random()<.035){state.home+=7;homeScore.textContent=state.home;state.down=1;state.togo=10;status.textContent="TOUCHDOWN!";state.q=Math.min(4,state.q+1)}
+if(state.down>4){status.textContent="TURNOVER ON DOWNS.";state.down=1;state.togo=10;state.q=Math.min(4,state.q+1)}
+if(state.secs<=0 || state.q>4)finish();else updateDown()
+}
+function animate(type,to){const shift=to?-5:(type==='deep'?38:type==='run'?24:30);['qb','rb','wr','wr2','ball'].forEach((id,i)=>{let el=document.getElementById(id);el.style.left=Math.min(90,16+shift+i*2)+'%';});setTimeout(()=>{['qb','rb','wr','wr2','ball'].forEach((id,i)=>document.getElementById(id).style.left=(16+i*3)+'%')},450)}
+function finish(){let win=state.home>=state.away; if(win)state.w++;else state.l++;state.week++;modalTitle.textContent=win?'WIN — '+state.team.name:'LOSS — '+state.team.name;modalText.textContent=`Final: ${state.team.abbr} ${state.home} — ${state.opp.abbr} ${state.away}. ${win?'Keep the run going.':'Bounce back next week.'}`;modal.classList.add('show')}
+function closeModal(){modal.classList.remove('show');renderSeason()}
+renderTeams();renderSeason();renderRoster();
+</script>
+</body>
+</html>
